@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<title>config</title>
+	</head>
+	<body>
+		<form method="POST" action="./domain">
+			<input type="hidden" name="_method" value="POST">
+			NGドメイン追加:<input type="text" name="word"" />
+			<input type="submit" value="追加" />
+		</form>
+		<form method="POST" action="./title">
+			<input type="hidden" name="_method" value="POST">
+			NGタイトル追加:<input type="text" name="word"" />
+			<input type="submit" value="追加" />
+		</form>
+
+		NGドメイン一覧</br>
+		{% for domain in ngdomains %}
+		<form method="POST" action="./domain">
+			<input type="hidden" name="_method" value="DELETE">
+			{{domain[0]}}:<input type="hidden" name="word" value="{{domain[0]}}" />
+			<input type="submit" value="削除" />
+		</form>
+
+		{% endfor %}
+
+		NGタイトル一覧</br>
+		{% for title in ngtitles %}
+		<form method="POST" action="./title">
+			<input type="hidden" name="_method" value="DELETE">
+			{{title[0]}}:<input type="hidden" name="word" value="{{title[0]}}" />
+			<input type="submit" value="削除" />
+		</form>
+
+		{% endfor %}
+	</body>
+</html>
